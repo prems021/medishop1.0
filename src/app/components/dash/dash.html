@@ -1,0 +1,114 @@
+<section class="top_header">
+
+<div class="topnav">
+  
+   <a routerLink="/reciept" routerLinkActive="active" class="active">Receipt </a>
+   <a routerLink="/add_stock_item" routerLinkActive="active">Add Stock item </a>
+   <a routerLink="/aetest1" routerLinkActive="active">View Stock </a>
+   <a routerLink="/test" routerLinkActive="active">Stock Adjust </a>
+   <a routerLink="/aetest1" routerLinkActive="active">Reports</a>
+   <a routerLink="/admin-panel" routerLinkActive="active">Admin panel</a>
+  
+ 
+</div>
+
+
+</section>
+<section class="bill_section">
+
+ <div class="container" width="800px" id="invoice" >
+    <div class="row">
+      <div class="col-xs-12 heading">
+        INVOICE
+      </div>
+    </div>
+    <div class="row branding">
+      <div class="col-xs-6">
+        <div class="invoice-number-container">
+          <label for="invoice-number">Invoice No #</label><input type="text" id="invoice-number" [(ngModel)]="invoice_number">
+        </div>
+      </div>
+    <form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Description" aria-label="Description" [matAutocomplete]="auto" [formControl]="PdtCtrl">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let state of filteredpdts | async" [value]="state.PRODUCT_NAME">
+        
+        <span>{{ state.CODE }}</span> 
+        
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <br />
+
+</form>
+
+  <div class="items-table">
+      <div class="row header">
+        <div class="col-xs-1">&nbsp;</div>
+        <div class="col-xs-5">Description</div>
+        <div class="col-xs-2">Quantity</div>
+        <div class="col-xs-2">Cost {{currencySymbol}}</div>
+        <div class="col-xs-2 text-right">Total</div>
+      </div>
+   
+    <div class="row invoice-item" ng-repeat="item in invoice.items" ng-animate="'slide-down'">
+        <div class="col-xs-1 remove-item-container">
+          <a href ng-hide="printMode" ng-click="removeItem(item)" class="btn btn-danger">[X]</a>
+        </div>
+
+
+        <div class="col-xs-5 input-container">
+          
+          <input placeholder="Description" aria-label="Description" [matAutocomplete]="auto" [formControl]="PdtCtrl">
+            <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let state of filteredpdts | async" [value]="state.PRODUCT_NAME" (blur)="readValue(state.PRICE)">
+        
+             <span>{{ state.CODE }}</span> 
+        
+            </mat-option>
+              </mat-autocomplete>
+        </div>
+
+        
+
+        <div class="col-xs-2 input-container">
+          <input #box (keydown.Tab)="onEnter(box.value)"  value="1" size="4"  placeholder="Quantity" [formControl]="PdtQty">
+        </div>
+
+    
+           
+          
+
+      
+        <div class="col-xs-2 input-container">
+          <input    size="6" [formControl]="PdtCost" placeholder="Cost">
+        </div>
+
+      </div>
+  </div>
+
+    </div>
+
+    
+    
+     
+    
+    <div class="row noPrint actions">
+      <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printInfo()">Print</a>
+      <a href="#" class="btn btn-primary" (click)="view()">Reset</a>
+      <a href="#" class="btn btn-primary" ng-hide="printMode" ng-click="printMode = true;">Turn On Print Mode</a>
+      <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printMode = false;">Turn Off Print Mode</a>
+    </div>
+  </div>
+
+ 
+
+
+</section>    
+
+<section class="lo_div">
+<a routerLink="/login" routerLinkActive="active">Logout</a>
+</section>
+

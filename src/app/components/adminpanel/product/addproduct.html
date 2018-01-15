@@ -1,0 +1,34 @@
+
+<span class="p_add_p_h">
+<h4>Add a New Product</h4>
+</span>
+<div class="container-fluid col-xs-10 col-sm-10 col-md-4 col-lg-4 col-xs-offset-1 col-sm-offset-1 col-md-offset-4 col-lg-offset-4 shadow">
+<form [formGroup]="expenseForm">
+  <div class="form-group">
+    <label for="Productname">Product Name</label>
+    <input id="Productname"  formControlName="Productname" type="text" class="form-control" placeholder="Productname">
+  </div>
+  <div class="form-group">
+    <label >Code</label>
+    <input id="Code" formControlName="Code" type="text" class="form-control" placeholder="Code">
+  </div>
+   <div class="form-group">
+    <label >Price</label>
+    <input id="Price" formControlName="Price" type="number" class="form-control" placeholder="Price">
+  </div>
+  <div class="form-group">
+    <label >Gst Slab</label>
+   <select class="form-control" formControlName="Gst_slab">
+        <option *ngFor="let Gst of Gsts " value="{{Gst}}">{{Gst}}</option>
+        </select>
+  </div>
+</form>
+
+ <button class="btn btn-primary pull-right" (click)="add_product()" type="button"><span class="glyphicon glyphicon-ok"></span> Done</button>
+</div>
+
+<div class="home">
+<a routerLink="/dash" routerLinkActive="active">home</a>
+</div>
+
+

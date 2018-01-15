@@ -1,0 +1,22 @@
+.shadow {
+    min-height: 40%;
+    box-shadow: 5px 5px 0 rgba(0,0,0,.1);
+    border-radius: 4px;
+    background-color: #fcf8e3;
+}
+form {
+    display: block;
+    margin-top: 0em;
+}
+.p_add_p_h
+{
+text-align: center;
+
+}
+
+.home
+{
+   font-family: cursive; 
+      
+    
+}
